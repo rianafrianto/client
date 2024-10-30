@@ -4,8 +4,7 @@ import { CardContext } from '../context/CardContext';
 import { EditOutlined, PlusOutlined } from '@ant-design/icons';
 
 const AddCardForm = ({ card, onClose }) => {
-  const { addCard, updateCard } = useContext(CardContext);
-  const [form] = Form.useForm();
+  const { addCard, updateCard, form, handleGenerate, loadingGenerate, loadingAddUpdate  } = useContext(CardContext);
 
   useEffect(() => {
     if (card) {
@@ -36,9 +35,9 @@ const AddCardForm = ({ card, onClose }) => {
         label="Title"
         rules={[{ required: true, message: 'Please input the title!' }]}
       >
-        <Input 
-          placeholder='Input Title' 
-          prefix={<EditOutlined />} // Add icon to the input
+        <Input
+          placeholder='Input Title'
+          prefix={<EditOutlined />}
         />
       </Form.Item>
       <Form.Item
@@ -46,18 +45,28 @@ const AddCardForm = ({ card, onClose }) => {
         label="Description"
         rules={[{ required: true, message: 'Please input the description!' }]}
       >
-        <Input.TextArea 
-          placeholder='Input Description' 
-          prefix={<EditOutlined />} // Add icon to the TextArea
+        <Input.TextArea
+          placeholder='Input Description'
+          prefix={<EditOutlined />} 
         />
       </Form.Item>
       <Form.Item>
-        <Button 
-          type="primary" 
-          htmlType="submit" 
-          icon={card ? <EditOutlined /> : <PlusOutlined />} // Change icon based on card state
+        <Button
+          type="primary"
+          htmlType="submit"
+          icon={card ? <EditOutlined /> : <PlusOutlined />}
+          loading={loadingAddUpdate}
         >
           {card ? ' Update Card' : ' Add Card'}
+        </Button>
+        <Button
+          type="button"
+          onClick={handleGenerate}
+          icon={<PlusOutlined />}
+          style={{ marginLeft: '8px' }} 
+          loading={loadingGenerate}
+        >
+          Generate Suggestion
         </Button>
       </Form.Item>
     </Form>
