@@ -23,30 +23,35 @@ const Card = ({ card }) => {
     <>
       <AntCard
         title={card.title}
-        bordered={false}
+        bordered={true}
+        hoverable
         style={{
           margin: '10px',
           borderRadius: '8px',
           boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
         }}
+        bodyStyle={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}
       >
-        <p>{card.description}</p>
+        <div style={{ flexGrow: 1 }}>{card.description}</div>
 
         <Row justify="space-between" align="middle" style={{ marginTop: '10px' }}>
-          <Col>
-            <Space size="middle">
-              <Button 
-                type="primary" 
-                icon={<EditOutlined />} 
+          <Col span={24}>
+            <Space size="middle" style={{ display: 'flex', justifyContent: 'center', marginTop: 'auto' }}>
+              <Button
+                type="primary"
+                icon={<EditOutlined />}
                 onClick={handleEdit}
               >
                 Edit
               </Button>
 
-              <Button 
-                type="primary" 
-                danger 
-                icon={<DeleteOutlined />} 
+              <Button
+                type="primary"
+                danger
+                icon={<DeleteOutlined />}
                 onClick={() => removeCard(card.id)}
               >
                 Remove

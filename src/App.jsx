@@ -7,6 +7,7 @@ import Sidebar from './components/Sidebar'; // Import Sidebar
 import Home from './pages/Home';
 import AddCard from './pages/AddCard';
 import ManageCards from './pages/ManageCard';
+import NotFound from './components/NotFound';
 
 const { Header, Content } = Layout;
 
@@ -27,6 +28,7 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/add-card" element={<AddCard />} />
                 <Route path="/manage-cards" element={<ManageCards />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </Content>
           </Layout>

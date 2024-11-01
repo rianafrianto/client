@@ -60,10 +60,10 @@ const AddCardForm = ({ card, onClose }) => {
           {card ? ' Update Card' : ' Add Card'}
         </Button>
         <Button
-          type="button"
+          type="dashed"
           onClick={handleGenerate}
           icon={<PlusOutlined />}
-          style={{ marginLeft: '8px' }} 
+          style={{ marginLeft: '15px', height:"100%" }} 
           loading={loadingGenerate}
         >
           Generate Suggestion
